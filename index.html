@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAT CBT Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div>
+      <div class="title">COMMON ADMISSION TEST — MOCK TEST</div>
+      <div class="candidate">Candidate: Practice Candidate</div>
+    </div>
+    <div id="timer" class="timer">40:00</div>
+  </header>
+
+  <nav class="section-tabs">
+    <button class="section-tab active" data-section="VARC">VARC</button>
+    <button class="section-tab" data-section="DILR">DILR</button>
+    <button class="section-tab" data-section="QA">QA</button>
+  </nav>
+
+  <main id="examView">
+    <div class="exam-layout">
+      <section class="main-panel">
+        <div class="info-bar">
+          <span id="sectionLabel"></span>
+          <span>MCQ: +3 / −1 &nbsp; | &nbsp; TITA: +3 / 0</span>
+        </div>
+
+        <div id="questionArea" class="question-area"></div>
+
+        <div class="action-bar">
+          <button id="previousBtn" class="btn">Previous</button>
+          <button id="clearBtn" class="btn danger">Clear Response</button>
+          <button id="markBtn" class="btn purple">Mark for Review &amp; Next</button>
+          <button id="saveBtn" class="btn primary">Save &amp; Next</button>
+          <button id="calculatorBtn" class="btn">Calculator</button>
+          <button id="paperBtn" class="btn">Question Paper</button>
+          <button id="submitBtn" class="btn primary">Submit Section</button>
+        </div>
+      </section>
+
+      <aside class="palette">
+        <h3>Question Palette</h3>
+        <div class="legend">
+          <span><i class="dot answered"></i>Answered</span>
+          <span><i class="dot notanswered"></i>Not Answered</span>
+          <span><i class="dot notvisited"></i>Not Visited</span>
+          <span><i class="dot marked"></i>Marked</span>
+          <span><i class="dot answeredmarked"></i>Answered + Marked</span>
+        </div>
+        <div id="paletteGrid" class="palette-grid"></div>
+        <div id="sectionSummary" class="section-summary"></div>
+      </aside>
+    </div>
+  </main>
+
+  <section id="calculator" class="calculator hidden">
+    <input id="calcDisplay" readonly>
+    <div class="calc-grid">
+      <button data-calc="7">7</button><button data-calc="8">8</button>
+      <button data-calc="9">9</button><button data-calc="/">÷</button>
+      <button data-calc="4">4</button><button data-calc="5">5</button>
+      <button data-calc="6">6</button><button data-calc="*">×</button>
+      <button data-calc="1">1</button><button data-calc="2">2</button>
+      <button data-calc="3">3</button><button data-calc="-">−</button>
+      <button data-calc="0">0</button><button data-calc=".">.</button>
+      <button data-calc="C">C</button><button data-calc="+">+</button>
+      <button data-calc="=">=</button>
+    </div>
+  </section>
+
+  <section id="paper" class="modal hidden">
+    <div class="modal-card">
+      <button class="close" id="closePaper">×</button>
+      <h2>Question Paper</h2>
+      <p>Use the question palette to jump between questions. Navigation is restricted to the active section.</p>
+      <p><strong>Current section:</strong> <span id="paperSection"></span></p>
+    </div>
+  </section>
+
+  <section id="results" class="results hidden"></section>
+</div>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
